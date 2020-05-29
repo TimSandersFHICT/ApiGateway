@@ -28,6 +28,17 @@ namespace GatewayAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAuthentication()
+              .AddJwtBearer("TestKey", options =>
+              {
+                  options.Authority = "https://localhost:3000";
+                  options.RequireHttpsMetadata = false;
+
+                  options.Audience = "APIGW";
+              });
+            services.AddCors();
+
+       
             services.AddOcelot(Configuration);
         }
 
@@ -43,13 +54,23 @@ namespace GatewayAPI
 
             app.UseRouting();
 
-            app.UseAuthorization();
-            app.UseOcelot();
+            app.UseAuthentication();
+
+            //app.UseAuthorization();
+
+
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            app.UseCors(b => b
+                .WithOrigins("http://localhost:3000")
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+                
+            app.UseOcelot();
         }
     }
 }

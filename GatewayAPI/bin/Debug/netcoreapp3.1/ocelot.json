@@ -21,7 +21,25 @@
                     }
                 ],
                 "UpstreamPathTemplate": "/user-api/{catchAll}"
+                },
+                {
+                    "DownstreamHostAndPorts": [
+                        {
+                            "Host": "localhost",
+                            "Port": 3000
+                        }
+                    ],
+                    "DownstreamPathTemplate": "/",
+                    "UpstreamPathTemplate": "/",
+                    "UpstreamHttpMethod": ["Post"],
+                    "ReRouteIsCaseSensitive": false,
+                    "DownstreamScheme": "http",
+                    "AuthenticationOptions": {
+                        "AuthenticationProviderKey": "TestKey",
+                        "AllowedScopes": []
+                    }
                 }
+                
     ],
     "GlobalConfiguration": {
         "BaseUrl": "https://localhost:7000"
