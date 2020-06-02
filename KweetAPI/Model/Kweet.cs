@@ -5,14 +5,14 @@ namespace KweetAPI.Model
     public class Kweet
     {
         public int id { get; set; }
-        public int UserID { get; set; }
+        public string userID { get; set; }
         public string text { get; set; }
         public DateTime created { get; set; }
 
         public Kweet() { }
-        public Kweet(long userId, string text)
+        public Kweet(string userId, string text)
         {
-            UserID = id;
+            userID = userId;
             this.text = text;
             this.created = DateTime.Now;
         }

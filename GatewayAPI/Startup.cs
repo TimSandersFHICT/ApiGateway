@@ -29,13 +29,13 @@ namespace GatewayAPI
         {
             services.AddControllers();
             services.AddAuthentication()
-              .AddJwtBearer("TestKey", options =>
-              {
-                  options.Authority = "https://localhost:3000";
-                  options.RequireHttpsMetadata = false;
+                .AddJwtBearer("TestKey" ,options =>
+                {
+                    options.Authority = "https://localhost:3000";
+                    options.RequireHttpsMetadata = false;
 
-                  options.Audience = "APIGW";
-              });
+                    options.Audience = "GatewayAPI";
+                });
             services.AddCors();
 
        

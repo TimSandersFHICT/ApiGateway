@@ -34,7 +34,7 @@ namespace UserAPI.Controllers
 
         // GET: api/User/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<User>> GetUser(string id)
         {
             //reason not to use the default "FindAsync" method:
             //https://stackoverflow.com/a/39095357
@@ -55,7 +55,7 @@ namespace UserAPI.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutUser(string id, User user)
         {
             if (id != user.id)
             {
@@ -116,7 +116,7 @@ namespace UserAPI.Controllers
             System.Diagnostics.Debug.WriteLine("Help");
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(string id)
         {
             return _context.UserItems.Any(e => e.id == id);
         }

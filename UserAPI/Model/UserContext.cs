@@ -13,7 +13,7 @@ namespace UserAPI.Model
 
         public DbSet<User> UserItems { get; set; }
 
-        public List<User> GetByUserid(int userId)
+        public List<User> GetByUserid(string userId)
         {
             return UserItems.Where(r => userId.Equals(r.id)).ToList();
         }
