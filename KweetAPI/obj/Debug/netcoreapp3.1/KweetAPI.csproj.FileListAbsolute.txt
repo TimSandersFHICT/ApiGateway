@@ -54,3 +54,4 @@ C:\Users\Tim\Documents\GitHub\ApiGateway\KweetAPI\bin\Debug\netcoreapp3.1\Micros
 C:\Users\Tim\Documents\GitHub\ApiGateway\KweetAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Tim\Documents\GitHub\ApiGateway\KweetAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\Tim\Documents\GitHub\ApiGateway\KweetAPI\obj\Debug\netcoreapp3.1\KweetAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Tim\Documents\GitHub\ApiGateway\KweetAPI\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll

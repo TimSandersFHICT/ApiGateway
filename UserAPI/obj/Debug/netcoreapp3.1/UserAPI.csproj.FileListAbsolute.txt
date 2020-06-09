@@ -54,3 +54,4 @@ C:\Users\Tim\Documents\GitHub\ApiGateway\UserAPI\bin\Debug\netcoreapp3.1\Microso
 C:\Users\Tim\Documents\GitHub\ApiGateway\UserAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Tim\Documents\GitHub\ApiGateway\UserAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\Tim\Documents\GitHub\ApiGateway\UserAPI\obj\Debug\netcoreapp3.1\UserAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Tim\Documents\GitHub\ApiGateway\UserAPI\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll

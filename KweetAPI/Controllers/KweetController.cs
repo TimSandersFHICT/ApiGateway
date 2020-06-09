@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using KweetAPI.Model;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using System.Text;
 
 namespace Kweet_service.Controllers
 {
@@ -14,10 +17,63 @@ namespace Kweet_service.Controllers
     public class KweetController : ControllerBase
     {
         private readonly KweetContext _context;
+        private ConnectionFactory factory;
+        private IConnection conn;
+        private IModel channel;
 
         public KweetController(KweetContext context)
         {
             _context = context;
+
+            factory = new ConnectionFactory { HostName = "localhost" };
+            conn = factory.CreateConnection();
+            channel = conn.CreateModel();
+
+            channel.QueueDeclare(
+                queue: "UserQueue",
+                durable: false,
+                exclusive: false,
+                autoDelete: false,
+                arguments: null
+                );
+
+            var consumer = new EventingBasicConsumer(channel);
+
+            consumer.Received += async (model, eventArgs) =>
+            {
+                var body = eventArgs.Body;
+                var message = Encoding.UTF8.GetString(body.ToArray());
+
+                Console.WriteLine($"[MessageQueue] Received message '{message}'");
+
+                var messageParts = message.Split(":");
+
+                var result = 0;
+                if (messageParts[0] == "DELETE")
+                {
+                    result = await DeleteKweetsOfUserId(messageParts[1]);
+                    Console.WriteLine($"[MessageQueue] Processed message '{message}' and deleted {result} records.");
+                }
+                if (messageParts[0] == "PUT")
+                {
+                    result = await UpdateKweetsOfUserId(messageParts[1], messageParts[2]);
+                    Console.WriteLine($"[MessageQueue] Processed message '{message}' and updated {result} records.");
+                }
+
+               
+            };
+
+            channel.BasicConsume(queue: "UserQueue", autoAck: true, consumer: consumer);
+        }
+
+        //Destructor
+        ~KweetController()
+        {
+            //Connection and Channels are meant to be long-lived
+            //So we don't open and close them for each operation
+
+            channel.Close();
+            conn.Close();
         }
 
         // GET: api/Kweet
@@ -102,5 +158,49 @@ namespace Kweet_service.Controllers
         {
             return _context.KweetItems.Any(e => e.id == id);
         }
+
+
+        private async Task<int> DeleteKweetsOfUserId(string userId)
+        {
+            var deletedAmount = 0;
+            var optionsBuilder = new DbContextOptionsBuilder<KweetContext>();
+            optionsBuilder.UseInMemoryDatabase("KweetList");
+
+            using (var tempContext = new KweetContext(optionsBuilder.Options))
+            {
+                var userKweets = await tempContext.KweetItems.Where(h => h.userID == userId).ToListAsync();
+                deletedAmount = userKweets.Count;
+
+                if (deletedAmount == 0) { return 0; }
+
+                tempContext.KweetItems.RemoveRange(userKweets);
+                await tempContext.SaveChangesAsync();
+            }
+            return deletedAmount;
+        }
+
+        private async Task<int> UpdateKweetsOfUserId(string userId, string username)
+        {
+            var updatedAmount = 0;
+            var optionsBuilder = new DbContextOptionsBuilder<KweetContext>();
+            optionsBuilder.UseInMemoryDatabase("KweetList");
+
+            using (var tempContext = new KweetContext(optionsBuilder.Options))
+            {
+                var userKweets = await tempContext.KweetItems.Where(h => h.userID == userId).ToListAsync();
+
+                foreach(Kweet kweet in userKweets)
+                {
+                    kweet.username = username;
+                }
+                updatedAmount = userKweets.Count;
+
+                if (updatedAmount == 0) { return 0; }
+
+                await tempContext.SaveChangesAsync();
+            }
+            return updatedAmount;
+        }
+        
     }
 }
