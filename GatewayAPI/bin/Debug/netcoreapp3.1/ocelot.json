@@ -9,8 +9,13 @@
                     "Port": 7001
                 }
             ],
-            "UpstreamPathTemplate": "/kweet-api/{catchAll}"
-            },
+            "UpstreamPathTemplate": "/kweet-api/{catchAll}",
+            "UpstreamHttpMethod": ["Post", "Get", "Delete", "Put"],
+                "AuthenticationOptions": {
+                    "AuthenticationProviderKey": "TestKey",
+                    "AllowedScopes": []
+                  }
+                },
             {
                 "DownstreamPathTemplate": "/api/{catchAll}",
                 "DownstreamScheme": "http",
@@ -20,7 +25,12 @@
                         "Port": 7002
                     }
                 ],
-                "UpstreamPathTemplate": "/user-api/{catchAll}"
+                "UpstreamPathTemplate": "/user-api/{catchAll}",
+                "UpstreamHttpMethod": ["Post", "Get", "Delete", "Put"],
+                "AuthenticationOptions": {
+                    "AuthenticationProviderKey": "TestKey",
+                    "AllowedScopes": []
+                  }
                 },
                 {
                     "DownstreamHostAndPorts": [
@@ -31,7 +41,7 @@
                     ],
                     "DownstreamPathTemplate": "/",
                     "UpstreamPathTemplate": "/",
-                    "UpstreamHttpMethod": ["Post"],
+                    "UpstreamHttpMethod": ["Post", "Get", "Delete", "Put"],
                     "ReRouteIsCaseSensitive": false,
                     "DownstreamScheme": "http",
                     "AuthenticationOptions": {

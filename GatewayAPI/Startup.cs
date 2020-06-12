@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Ocelot.Middleware;
 using Ocelot.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace GatewayAPI
 {
@@ -28,17 +29,18 @@ namespace GatewayAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddAuthentication()
-                .AddJwtBearer("TestKey" ,options =>
+            var authenticationProviderKey = "TestKey";
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(authenticationProviderKey, x =>
                 {
-                    options.Authority = "https://localhost:3000";
-                    options.RequireHttpsMetadata = false;
-
-                    options.Audience = "GatewayAPI";
+                    x.Authority = "https://dev-rmrp1y1j.eu.auth0.com/";
+                    x.Audience = "6yNg0r9izZeh5LAyEDccqgi9NwI67M5z";
                 });
-            services.AddCors();
 
-       
+            services.AddCors();
             services.AddOcelot(Configuration);
         }
 
@@ -56,7 +58,7 @@ namespace GatewayAPI
 
             app.UseAuthentication();
 
-            //app.UseAuthorization();
+            app.UseAuthorization();
 
 
 
