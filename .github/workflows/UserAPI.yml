@@ -9,6 +9,8 @@ jobs:
   deploy:
     name: Deploy job
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./UserAPI
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v1
@@ -38,7 +40,7 @@ jobs:
           curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
           chmod u+x ./kustomize
       - name: Deploy
-        working-directory: ./UserAPI
+        working-directory:  ${{ env.working-directory }}
         run: |-
           ./kustomize edit set image eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/IMAGE:TAG=eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/userapi:latest
           ./kustomize build . | kubectl apply -f -
