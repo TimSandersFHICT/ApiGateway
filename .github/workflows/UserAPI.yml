@@ -39,7 +39,7 @@ jobs:
           chmod u+x ./kustomize
       - name: Deploy 
         run: |-
-          ./userAPI/kustomize edit set image eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/IMAGE:TAG=eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/userapi:latest
-          ./userAPI/kustomize build . | kubectl apply -f -
+          ./UserAPI/kustomize edit set image eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/IMAGE:TAG=eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/userapi:latest
+          ./UserAPI/kustomize build . | kubectl apply -f -
           kubectl rollout status deployment/userapi
           kubectl get services -o wide
