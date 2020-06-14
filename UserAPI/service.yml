@@ -20,6 +20,6 @@ metadata:
 spec:
   ports:
     - port: 8080
-      targetPort: 3000
+      targetPort: 7002
   selector:
     app: userapi
