@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["UserAPI/UserAPI.csproj"]
+COPY ["UserAPI/UserAPI.csproj", "UserAPI/"]
 RUN dotnet restore "UserAPI/UserAPI.csproj"
 COPY . .
 WORKDIR "/src/UserAPI"
