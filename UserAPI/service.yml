@@ -19,7 +19,7 @@ metadata:
   name: kwetter-user-api
 spec:
   ports:
-    - port: 8080
-      targetPort: 7002
+    - port: 7002
+      targetPort: 8080
   selector:
     app: userapi
