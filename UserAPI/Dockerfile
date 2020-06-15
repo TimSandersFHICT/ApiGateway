@@ -1,8 +1,6 @@
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
-WORKDIR /app
-
-ENV ASPNETCORE_URLS=http://+:7002
+WORKDIR /UserAPI
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
@@ -18,6 +16,6 @@ RUN dotnet publish "UserAPI.csproj" -c Release -o /app/publish
 
 FROM base AS final
 
-WORKDIR /app
+WORKDIR /UserAPI
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "UserAPI.dll"]
