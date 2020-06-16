@@ -19,17 +19,18 @@ namespace UserAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserContext _context;
+        private readonly IConfiguration _configuration;
         private ConnectionFactory factory;
         private IConnection conn;
         private IModel channel;
-        private readonly IConfiguration Configuration;
+
 
         public UserController(UserContext context, IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
             _context = context;
 
-            var RabbitMQOption = Configuration.GetSection(RabbitMQOptions.Position)
+            var RabbitMQOption = _configuration.GetSection(RabbitMQOptions.Position)
                 .Get<RabbitMQOptions>();
 
             factory = new ConnectionFactory { HostName = RabbitMQOption.Connection };

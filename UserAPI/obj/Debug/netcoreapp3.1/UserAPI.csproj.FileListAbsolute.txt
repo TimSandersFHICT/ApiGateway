@@ -1,5 +1,4 @@
 C:\Users\Tim\Documents\GitHub\ApiGateway\UserAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\Tim\Documents\GitHub\ApiGateway\UserAPI\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Tim\Documents\GitHub\ApiGateway\UserAPI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Tim\Documents\GitHub\ApiGateway\UserAPI\bin\Debug\netcoreapp3.1\UserAPI.exe
 C:\Users\Tim\Documents\GitHub\ApiGateway\UserAPI\bin\Debug\netcoreapp3.1\UserAPI.deps.json
