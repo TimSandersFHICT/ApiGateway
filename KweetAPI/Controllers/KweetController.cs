@@ -9,6 +9,7 @@ using KweetAPI.Model;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 
 namespace Kweet_service.Controllers
 {
@@ -20,12 +21,17 @@ namespace Kweet_service.Controllers
         private ConnectionFactory factory;
         private IConnection conn;
         private IModel channel;
-
-        public KweetController(KweetContext context)
+        private readonly IConfiguration Configuration;
+        
+        public KweetController(KweetContext context, IConfiguration configuration)
         {
+            Configuration = configuration;
             _context = context;
 
-            factory = new ConnectionFactory { HostName = "localhost" };
+             var RabbitMQOption = Configuration.GetSection(RabbitMQOptions.Position)
+                .Get<RabbitMQOptions>();
+
+            factory = new ConnectionFactory { HostName = RabbitMQOption.Connection };
             conn = factory.CreateConnection();
             channel = conn.CreateModel();
 

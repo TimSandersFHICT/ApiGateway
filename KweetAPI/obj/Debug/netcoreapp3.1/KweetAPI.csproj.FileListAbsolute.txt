@@ -127,3 +127,4 @@ C:\Users\Tim\Documents\GitHub\ApiGateway\KweetAPI\bin\Debug\netcoreapp3.1\tr\Mic
 C:\Users\Tim\Documents\GitHub\ApiGateway\KweetAPI\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Tim\Documents\GitHub\ApiGateway\KweetAPI\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Tim\Documents\GitHub\ApiGateway\KweetAPI\obj\Debug\netcoreapp3.1\KweetAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Tim\Documents\GitHub\ApiGateway\KweetAPI\bin\Debug\netcoreapp3.1\appsettings.Production.json
