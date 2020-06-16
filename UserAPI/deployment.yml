@@ -18,7 +18,7 @@ spec:
       - name: userapi
         image: eu.gcr.io/kwetter-274507/userapi:latest
         ports:
-        - containerPort: 7002
+        - containerPort: 8080
         resources:
           requests:
             cpu: 100m

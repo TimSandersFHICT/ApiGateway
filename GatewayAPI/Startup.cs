@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Ocelot.Middleware;
 using Ocelot.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Ocelot.Provider.Kubernetes;
 
 namespace GatewayAPI
 {
@@ -41,7 +42,8 @@ namespace GatewayAPI
                 });
 
             services.AddCors();
-            services.AddOcelot(Configuration);
+            services.AddOcelot(Configuration)
+                .AddKubernetes();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
