@@ -1,4 +1,4 @@
-name: Deploy the User API to Google Cloud Run
+name: Deploy the Kweet API to Google Cloud Run
 on:
   push:
     branches:
