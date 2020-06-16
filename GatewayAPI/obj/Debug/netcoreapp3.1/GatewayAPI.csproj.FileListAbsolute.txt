@@ -25,7 +25,6 @@ C:\Users\Tim\Documents\GitHub\ApiGateway\GatewayAPI\bin\Debug\netcoreapp3.1\Ocel
 C:\Users\Tim\Documents\GitHub\ApiGateway\GatewayAPI\obj\Debug\netcoreapp3.1\GatewayAPI.csproj.CopyComplete
 C:\Users\Tim\Documents\GitHub\ApiGateway\GatewayAPI\obj\Debug\netcoreapp3.1\GatewayAPI.dll
 C:\Users\Tim\Documents\GitHub\ApiGateway\GatewayAPI\obj\Debug\netcoreapp3.1\GatewayAPI.pdb
-C:\Users\Tim\Documents\GitHub\ApiGateway\GatewayAPI\bin\Debug\netcoreapp3.1\ocelot.json
 C:\Users\Tim\Documents\GitHub\ApiGateway\GatewayAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Tim\Documents\GitHub\ApiGateway\GatewayAPI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Tim\Documents\GitHub\ApiGateway\GatewayAPI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
@@ -121,3 +120,5 @@ C:\Users\Tim\Documents\GitHub\ApiGateway\GatewayAPI\bin\Debug\netcoreapp3.1\zh-H
 C:\Users\Tim\Documents\GitHub\ApiGateway\GatewayAPI\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Tim\Documents\GitHub\ApiGateway\GatewayAPI\obj\Debug\netcoreapp3.1\GatewayAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Tim\Documents\GitHub\ApiGateway\GatewayAPI\obj\Debug\netcoreapp3.1\GatewayAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Tim\Documents\GitHub\ApiGateway\gatewayapi\bin\Debug\netcoreapp3.1\configuration\ocelot_development.json
+C:\Users\Tim\Documents\GitHub\ApiGateway\gatewayapi\bin\Debug\netcoreapp3.1\configuration\ocelot_production.json

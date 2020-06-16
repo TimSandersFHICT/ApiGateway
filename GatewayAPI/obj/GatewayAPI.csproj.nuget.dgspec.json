@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tim\\Documents\\GitHub\\ApiGateway\\gatewayAPI\\GatewayAPI.csproj": {}
+    "C:\\Users\\Tim\\Documents\\GitHub\\ApiGateway\\gatewayapi\\GatewayAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tim\\Documents\\GitHub\\ApiGateway\\gatewayAPI\\GatewayAPI.csproj": {
+    "C:\\Users\\Tim\\Documents\\GitHub\\ApiGateway\\gatewayapi\\GatewayAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tim\\Documents\\GitHub\\ApiGateway\\gatewayAPI\\GatewayAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Tim\\Documents\\GitHub\\ApiGateway\\gatewayapi\\GatewayAPI.csproj",
         "projectName": "GatewayAPI",
-        "projectPath": "C:\\Users\\Tim\\Documents\\GitHub\\ApiGateway\\gatewayAPI\\GatewayAPI.csproj",
+        "projectPath": "C:\\Users\\Tim\\Documents\\GitHub\\ApiGateway\\gatewayapi\\GatewayAPI.csproj",
         "packagesPath": "C:\\Users\\Tim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tim\\Documents\\GitHub\\ApiGateway\\gatewayAPI\\obj\\",
+        "outputPath": "C:\\Users\\Tim\\Documents\\GitHub\\ApiGateway\\gatewayapi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

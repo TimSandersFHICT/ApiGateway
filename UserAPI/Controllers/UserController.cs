@@ -9,6 +9,7 @@ using UserAPI.Model;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 
 namespace UserAPI.Controllers
 {
@@ -21,12 +22,17 @@ namespace UserAPI.Controllers
         private ConnectionFactory factory;
         private IConnection conn;
         private IModel channel;
+        private readonly IConfiguration Configuration;
 
-        public UserController(UserContext context)
+        public UserController(UserContext context, IConfiguration configuration)
         {
+            Configuration = configuration;
             _context = context;
 
-            factory = new ConnectionFactory { HostName = "localhost" };
+            var RabbitMQOption = Configuration.GetSection(RabbitMQOptions.Position)
+                .Get<RabbitMQOptions>();
+
+            factory = new ConnectionFactory { HostName = RabbitMQOption.Connection };
             conn = factory.CreateConnection();
             channel = conn.CreateModel();
 
