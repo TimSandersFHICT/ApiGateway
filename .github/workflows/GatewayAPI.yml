@@ -1,5 +1,5 @@
   
-name: Deploy the User API to Google Cloud Run
+name: Deploy the Gateway API to Google Cloud Run
 on:
   push:
     branches:
@@ -19,7 +19,7 @@ jobs:
 
       - name: Build Docker image
         run: |-
-          docker build --tag "eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/userapi:$GITHUB_SHA" ./UserAPI
+          docker build --tag "eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/gatewayapi:$GITHUB_SHA" ./GatewayAPI
       - name: Authenticate into Google Cloud Platform
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
@@ -34,18 +34,18 @@ jobs:
             gcloud container clusters  get-credentials ${{ secrets.GCLOUD_CLUSTER }} --zone ${{ secrets.GCLOUD_ZONE }}
             
       - name: Push image to Google Cloud Container Registry
-        run: "docker push eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/userapi:$GITHUB_SHA"
+        run: "docker push eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/gatewayapi:$GITHUB_SHA"
      
      
       - name: Set up Kustomize
-        working-directory: ./UserAPI
+        working-directory: ./GatewayAPI
         run: |-
           curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
           chmod u+x ./kustomize
       - name: Deploy
-        working-directory: ./UserAPI
+        working-directory: ./GatewayAPI
         run: |-
-          ./kustomize edit set image eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/IMAGE:TAG=eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/userapi:$GITHUB_SHA 
+          ./kustomize edit set image eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/IMAGE:TAG=eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/gatewayapi:$GITHUB_SHA 
           ./kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment/userapi
+          kubectl rollout status deployment/gatewayapi
           kubectl get services -o wide

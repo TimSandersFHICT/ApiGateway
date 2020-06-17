@@ -4,6 +4,9 @@ on:
     branches:
       - 'master'
 
+env:
+  GITHUB_SHA: ${{ github.sha }}
+
 jobs:
   deploy:
     name: Deploy job
@@ -15,7 +18,7 @@ jobs:
 
       - name: Build Docker image
         run: |-
-          docker build --tag "eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/kweetapi:latest" ./KweetAPI
+          docker build --tag "eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/kweetapi:$GITHUB_SHA" ./KweetAPI
       - name: Authenticate into Google Cloud Platform
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
@@ -30,7 +33,7 @@ jobs:
             gcloud container clusters  get-credentials ${{ secrets.GCLOUD_CLUSTER }} --zone ${{ secrets.GCLOUD_ZONE }}
             
       - name: Push image to Google Cloud Container Registry
-        run: "docker push eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/kweetapi:latest"
+        run: "docker push eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/kweetapi:$GITHUB_SHA"
      
      
       - name: Set up Kustomize
@@ -41,7 +44,7 @@ jobs:
       - name: Deploy
         working-directory: ./KweetAPI
         run: |-
-          ./kustomize edit set image eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/IMAGE:TAG=eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/kweetapi:latest 
+          ./kustomize edit set image eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/IMAGE:TAG=eu.gcr.io/${{ secrets.GCLOUD_PROJECT }}/kweetapi:$GITHUB_SHA 
           ./kustomize build . | kubectl apply -f -
           kubectl rollout status deployment/kweetapi
           kubectl get services -o wide
