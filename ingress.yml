@@ -3,7 +3,8 @@ kind: Ingress
 metadata:
   name: kwetter-ingress
   annotations:
-    ingress.gcp.kubernetes.io/pre-shared-cert: mcrt-10d4da0b-3d04-49e7-963f-2b95928989a6
+    kubernetes.io/ingress.global-static-ip-name: ingressstatic
+    networking.gke.io/managed-certificates: kwettercertificate
 spec:
   rules:
   - http:
