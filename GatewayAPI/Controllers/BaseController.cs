@@ -14,7 +14,7 @@ namespace GatewayAPI.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return Ok(); //200
+             return Ok(); //200
         }
     }
 }
