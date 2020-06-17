@@ -2,7 +2,7 @@ name: Deploy RabbitMQ-service to Google Cloud Run
 on:
   push:
     branches:
-      - 'deploy/rabbit'
+      - 'master'
 
 jobs:
   deploy:
