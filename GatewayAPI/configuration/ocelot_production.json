@@ -5,8 +5,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 7001
+                    "Host": "kwetter-kweet-api",
+                    "Port": 8080
                 }
             ],
             "UpstreamPathTemplate": "/kweet-api/{catchAll}",
@@ -21,8 +21,8 @@
                 "DownstreamScheme": "http",
                 "DownstreamHostAndPorts": [
                     {
-                        "Host": "localhost",
-                        "Port": 7002
+                        "Host": "kwetter-user-api",
+                        "Port": 8080
                     }
                 ],
                 "UpstreamPathTemplate": "/user-api/{catchAll}",
@@ -52,6 +52,6 @@
                 
     ],
     "GlobalConfiguration": {
-        "BaseUrl": "https://localhost:7000"
+        "BaseUrl": "https://"
     }
 }
