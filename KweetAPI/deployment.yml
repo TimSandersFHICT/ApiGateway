@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: kweetapi
-        image: eu.gcr.io/kwetter-274507/kweetapi:latest
+        image: eu.gcr.io/kwetter-274507/IMAGE:TAG
         ports:
         - containerPort: 8080
         resources:
