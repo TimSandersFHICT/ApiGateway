@@ -17,3 +17,4 @@ kind: Kustomization
 resources:
 - RabbitMQ/deployment.yml
 - RabbitMQ/service.yml
+- ingress.yml
