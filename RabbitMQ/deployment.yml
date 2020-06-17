@@ -1,7 +1,7 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: userapi
+  name: rabbitmq
 spec:
   replicas: 1
   strategy:
@@ -9,18 +9,21 @@ spec:
       maxSurge: 1
       maxUnavailable: 1
   minReadySeconds: 5
+  selector:
+    matchLabels:
+      app: rabbitmq
   template:
     metadata:
       labels:
-        app: userapi
+        app: rabbitmq
     spec:
       containers:
-      - name: userapi
-        image: eu.gcr.io/kwetter-274507/userapi:latest
+      - name: rabbitmq
+        image: rabbitmq:3
         ports:
-        - containerPort: 8080
+        - containerPort: 5672
         resources:
           requests:
             cpu: 100m
           limits:
-            cpu: 100m  
+            cpu: 100m
