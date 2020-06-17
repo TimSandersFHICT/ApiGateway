@@ -2,6 +2,9 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: kwetter-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: kwetter-ingress
+    networking.gke.io/managed-certificates: kwettercertificate
 spec:
   rules:
   - http:
