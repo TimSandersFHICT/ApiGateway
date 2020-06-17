@@ -31,25 +31,7 @@
                     "AuthenticationProviderKey": "TestKey",
                     "AllowedScopes": []
                   }
-                },
-                {
-                    "DownstreamHostAndPorts": [
-                        {
-                            "Host": "localhost",
-                            "Port": 3000
-                        }
-                    ],
-                    "DownstreamPathTemplate": "/",
-                    "UpstreamPathTemplate": "/",
-                    "UpstreamHttpMethod": ["Post", "Get", "Delete", "Put"],
-                    "ReRouteIsCaseSensitive": false,
-                    "DownstreamScheme": "http",
-                    "AuthenticationOptions": {
-                        "AuthenticationProviderKey": "TestKey",
-                        "AllowedScopes": []
-                    }
-                }
-                
+                }              
     ],
     "GlobalConfiguration": {
         "BaseUrl": "https://localhost:7000"
