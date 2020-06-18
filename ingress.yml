@@ -4,7 +4,7 @@ metadata:
   name: kwetter-ingress
   annotations:
     kubernetes.io/ingress.global-static-ip-name: ingressstatic
-    networking.gke.io/managed-certificates: kwettercertificate
+
 spec:
   rules:
   - http:
