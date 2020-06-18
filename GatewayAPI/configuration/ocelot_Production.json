@@ -10,11 +10,7 @@
                 }
             ],
             "UpstreamPathTemplate": "/kweet-api/{catchAll}",
-            "UpstreamHttpMethod": ["Post", "Get", "Delete", "Put"],
-                "AuthenticationOptions": {
-                    "AuthenticationProviderKey": "TestKey",
-                    "AllowedScopes": []
-                  }
+            "UpstreamHttpMethod": ["Post", "Get", "Delete", "Put"]
                 },
             {
                 "DownstreamPathTemplate": "/api/{catchAll}",
@@ -26,11 +22,7 @@
                     }
                 ],
                 "UpstreamPathTemplate": "/user-api/{catchAll}",
-                "UpstreamHttpMethod": ["Post", "Get", "Delete", "Put"],
-                "AuthenticationOptions": {
-                    "AuthenticationProviderKey": "TestKey",
-                    "AllowedScopes": []
-                  }
+                "UpstreamHttpMethod": ["Post", "Get", "Delete", "Put"]
                 }
     ],
     "GlobalConfiguration": {
