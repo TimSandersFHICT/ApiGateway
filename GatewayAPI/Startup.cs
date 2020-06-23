@@ -41,6 +41,8 @@ namespace GatewayAPI
                     x.Audience = "6yNg0r9izZeh5LAyEDccqgi9NwI67M5z";
                 });
 
+            services.AddCors();
+
             services.AddOcelot(Configuration)
                 .AddKubernetes();
         }
@@ -68,6 +70,10 @@ namespace GatewayAPI
                 endpoints.MapControllers();
             });
 
+            app.UseCors(b => b
+                .WithOrigins("http://localhost:3000")
+                .AllowAnyMethod()
+                .AllowAnyHeader());
                 
             app.UseOcelot();
         }
